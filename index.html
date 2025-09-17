@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PNG Event Planner Budget & Accounting</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Chart.js + datalabels -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+  <!-- xlsx and jspdf for export -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <h1>PNG Event Planner Budget & Accounting</h1>
+
+  <!-- Chart of Accounts -->
+  <section id="accountsSection">
+    <h2>Chart of Accounts</h2>
+    <input type="text" id="accountName" placeholder="Account Name">
+    <select id="accountType">
+      <option value="Asset">Asset</option>
+      <option value="Liability">Liability</option>
+      <option value="Equity">Equity</option>
+      <option value="Revenue">Revenue</option>
+      <option value="Expense">Expense</option>
+    </select>
+    <button onclick="addAccount()">Add Account</button>
+    <button onclick="clearAccounts()">Clear Accounts</button>
+    <ul id="accountsList"></ul>
+
+<button onclick="window.location.href='stockpro.html'">Go to Stock Take</button>
+  </section>
+
+  <!-- Transactions -->
+  <section id="transactionSection">
+    <h2>Add Transaction</h2>
+    <input type="date" id="transactionDate">
+    <input type="text" id="transactionDesc" placeholder="Description">
+    <select id="debitAccount"></select>
+    <select id="creditAccount"></select>
+    <input type="number" id="transactionAmount" placeholder="Amount">
+    <button onclick="addTransactionWrapper()">Add Transaction</button>
+    <button onclick="resetTransactions()">Reset Transactions</button>
+    <br>
+    <input type="file" id="excelFile" accept=".xlsx">
+    <button onclick="importExcel()">Import Excel</button>
+    <ul id="transactionList"></ul>
+	
+	<!-- Cash on Hand Section -->
+<h3>Cash on Hand</h3>
+<input type="number" id="cashOnHandInput" placeholder="Enter available cash (K)">
+<button onclick="setCashOnHand()">Set Cash</button>
+<div id="cashSummary"></div>
+
+<h3>Cash vs Expenses Summary</h3>
+<table border="1" cellpadding="6" cellspacing="0" id="cashTable">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Debit</th>
+      <th>Credit</th>
+      <th>Amount (K)</th>
+      <th>Remaining Cash (K)</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+  </section>
+
+  <!-- Charts -->
+  <section id="chartsSection">
+    <h2>Daily Charts & Reports</h2>
+    <button id="downloadAllBtn" onclick="downloadAllCharts()">Download All Charts (PNG)</button>
+    <button id="downloadPDFBtn" onclick="downloadChartsPDF()">Download All Charts as PDF</button>
+    <div id="chartsContainer"></div>
+
+    <h3>All-Time Cumulative Chart</h3>
+    <div class="chartCard">
+      <canvas id="allTimeChart"></canvas>
+    </div>
+  </section>
+
+  <!-- Stock Take Section -->
+  <section id="stockTakeSection" style="display:none;">
+    <h2>Stock Take / Inventory Checking</h2>
+
+    <!-- Add Stock (opening stock) -->
+    <div class="stockRow">
+      <h3>Add / Register Stock</h3>
+      <input type="text" id="itemName" placeholder="Item Name">
+      <input type="number" id="itemQty" placeholder="Quantity">
+      <input type="number" id="itemPrice" placeholder="Unit Price (K)">
+      <button onclick="addStockItem()">Add Item</button>
+      <button onclick="resetStock()">Reset Stock</button>
+    </div>
+
+    <hr>
+
+    <!-- Separate form: Closing stock -->
+    <div class="stockRow">
+      <h3>Record Closing Stock (separate form)</h3>
+      <input type="text" id="closingItemName" placeholder="Item Name (exact)">
+      <input type="number" id="closingQty" placeholder="Closing Quantity">
+      <button onclick="recordClosingStock()">Record Closing Stock</button>
+      <p class="hint">Recording closing stock will set it as opening stock for the next period (auto roll-over).</p>
+    </div>
+
+    <hr>
+
+    <!-- Additional stock tools -->
+    <div class="stockRow">
+      <h3>Stock Take Balance (quick update)</h3>
+      <input type="text" id="balanceItemName" placeholder="Item Name">
+      <input type="number" id="balanceQty" placeholder="Counted Quantity">
+      <button onclick="updateStockBalance()">Update Balance</button>
+      <p class="hint">Quickly set counted qty (useful during physical count).</p>
+    </div>
+
+    <hr>
+
+    <div class="stockRow">
+      <h3>Check Stock Available</h3>
+      <input type="text" id="availableItemName" placeholder="Item Name">
+      <button onclick="checkAvailableStock()">Check</button>
+      <div id="availableResult"></div>
+    </div>
+
+    <hr>
+
+    <h3>Stock Records & Report</h3>
+    <ul id="stockList"></ul>
+    <div id="stockSummary"></div>
+    <div id="stockReport"></div>
+
+    <div class="stockDownloads">
+      <button onclick="downloadStockExcel()">Download Stock Report (Excel)</button>
+      <button onclick="downloadStockPDF()">Download Stock Report (PDF)</button>
+    </div>
+
+    <br>
+    <button onclick="showMainPage()">⬅ Back to Main Page</button>
+  </section>
+
+  <footer>
+    <p>Designed and developed by Modu Moyokeda.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="scripttake.js"></script>
+
+</body>
+</html>

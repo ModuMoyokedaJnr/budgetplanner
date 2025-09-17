@@ -1,0 +1,111 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #1a237e;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.product-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.product-form input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    flex: 1 1 180px;
+}
+
+.product-form button {
+    background-color: #1a237e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    flex: 1 1 150px;
+    transition: 0.3s;
+}
+
+.product-form button:hover {
+    background-color: #3949ab;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.product-table th,
+.product-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.product-table th {
+    background-color: #1a237e;
+    color: #fff;
+}
+
+.product-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+input.table-input {
+    width: 80px;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    text-align: center;
+}
+
+.btn-download {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #1a237e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-download:hover {
+    background-color: #3949ab;
+}
+
+.delete-btn {
+    background-color: #e53935;
+    padding: 6px 10px;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #b71c1c;
+}
